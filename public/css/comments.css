@@ -1,0 +1,136 @@
+/* Comment Styles */
+.comment {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.comment p {
+    font-size: 2rem;
+    color: #555;
+}
+
+.commenter-icon-frame {
+    display: flex;
+    align-items: flex-start;
+    margin: 5px;
+}
+
+.commentor-info {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-icon {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.reply-container {
+    margin-top: 10px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+/* Nested Comment Styles */
+.nested-comment {
+    margin-left: 20px;
+    /* border: 1px solid #ddd; */
+    padding: 10px;
+}
+
+.comment-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.reply-css-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.comment-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.reply-css-container {
+    display: flex;
+    align-items: flex-start;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+/* Avatar Icon Styles */
+.avatar-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.reply-link {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.delete-link {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.comment-input {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.post-btn-frame {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.comment-textarea {
+    width: 100%;
+    height: 100px;
+}
+
+.reply-text {
+    width: 100%;
+    height: 100px;
+}
+
+#post-btn {
+    display: flex;
+    justify-content: flex-end;
+    border-radius: 20px;
+    border: 0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    margin: 10px 2px;
+}
+
+.commenter-notation {
+    font-size: 1.2rem;
+    color: dimgray;
+    font-style: italic;
+}

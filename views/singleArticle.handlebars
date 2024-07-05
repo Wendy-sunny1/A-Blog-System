@@ -1,0 +1,220 @@
+<link rel='stylesheet' href='/css/comments.css' />
+<link rel='stylesheet' href='/css/singleArticlePage.css' />
+
+<div id='main-frame' class='main-body'>
+    <div id='blog-content' class='blog-content-frame'>
+        {{#if article.imageURL}}
+        <article class='grid grid--1x2 feature articleGrid'>
+            <div class='feature__content' data-aos='fade-right'>
+                <div class='userArticleInfos'>
+                    <span id='userArticleInfo__username'>
+                        By {{username}} on {{article.publishTime}}
+                    </span>
+                    <br>
+                    <span id='userArticleInfo__likes'>
+                        Liked by {{article.likeCount}} users
+                    </span>
+                    <hr>
+                </div>
+                <h3 class='feature__heading'>{{article.title}}</h3>
+                <p id='homePageParagraph'>
+                    {{{articleContent}}}
+                </p>
+                <div class='like-from-frame'>
+                    <form action='/like' method='POST' class='likeForm'>
+                    <input type='hidden' name='articleID' value='{{article.id}}' />
+                    <input type='hidden' name='userID' value='{{user.id}}' />
+                    <button class="btn" type='submit'>{{#if likeStatus}}Unlike{{else}}Like{{/if}}</button>
+                    </form>
+                </div>               
+            </div>
+            <div id='right-image-frame'>
+            <picture data-aos='zoom-in-left'>
+                <img class='feature__image' id='article_image' src={{article.imageURL}} alt='{{article.imageURL}}' />
+            </picture>
+            </div>
+            <!-- HTML form for adding comments -->
+            <div id="new-comment-frame-a" class="comment-container">
+                <div class="commenter-icon-frame">
+                    <div id="commentor-info">
+                    <img src="/images/{{avatarName}}" alt="avatar-icon" class="avatar-icon">
+                    <p>{{user.username}}</p>
+                </div>
+                </div>
+                <div id="comment-form-frame-a" class="comment-input">
+                    <form action="/aritcleid=3/newcomment" method="POST" id="comment-form">
+                        <textarea id="comment-text-a" class="comment-textarea" name="comment" placeholder="Enter your comment here" required=""></textarea><br>
+                        <div class='post-btn-frame'><button id="post-btn" class="comment-btn" type="submit">Post</button></div>
+                    </form>
+                </div>
+            </div>
+        </article>
+
+        {{else}}
+        <article class='grid grid--1x1 feature articleGrid'>
+            <div>
+                <div class='feature__content' data-aos='fade-right'>
+                    <div class='userArticleInfos'>
+                        <span id='userArticleInfo__username'>
+                            By {{user.username}} on {{article.publishTime}}
+                        </span>
+                        <br>
+                        <span id='userArticleInfo__likes'>
+                            Liked by {{article.likeCount}} users
+                        </span>
+                        <hr>
+                    </div>
+                    <h3 class='feature__heading'>{{article.title}}</h3>
+                    <p id='homePageParagraph'>
+                        {{{articleContent}}}
+                    </p>
+                    <div class='like-from-frame'>
+                        <form action='/like' method='POST' class='likeForm'>
+                            <input type='hidden' name='articleID' value='{{article.id}}' />
+                            <input type='hidden' name='userID' value='{{user.id}}' />
+                            <button class="btn" type='submit'>{{#if likeStatus}}Unlike{{else}}Like{{/if}}</button>
+                        </form>
+                    <div>
+                </div>
+            </div>
+
+            <!-- HTML form for adding comments -->
+            <div id='new-comment-frame-b' class="comment-container">
+                <div class="commenter-icon-frame">
+                    <div id='commentor-info'>
+                    <img src='/images/{{avatarName}}' alt='avatar-icon' class='avatar-icon'>
+                    <p>{{user.username}}</p>
+                    </div>
+                </div>
+                <div id='comment-form-frame-b' class="comment-input">
+                    <form action='/aritcleid={{article.id}}/newcomment' method='POST' id='comment-form'>
+                    <textarea id='comment-text-b' class="comment-textarea" name='comment' placeholder='Enter your comment here' required></textarea><br>
+                     <div class='post-btn-frame'><button id='post-btn' class='comment-btn' type='submit'>Post</button><div>
+                    </form>
+                </div>
+            </div>
+        </article>
+        {{/if}}
+    </div>
+
+    <hr>
+    <div id='hide-show-button'>
+        <!-- Add a toggle button with an arrow icon -->
+        <a id="toggleComments" class="toggle-button">&#9650; Hide Comments</a>
+    </div>
+    <div id='nested-comments' style='display: block;'>
+        <!-- Container to display comments -->
+        {{#each commentsToThisArticle}}
+        <div class='comment'>
+            <div id='comment-message-unit'>
+                <div class="comment-nested-text">
+                    <p>{{this.parent.texts}}</p>
+                </div>
+                <div class='commenter-notation'>
+                    Commented by <a href='/author/{{this.parent.username}}'>{{this.parent.username}}</a> at {{this.parent.commentTime}}
+                </div>
+                {{#if this.userIsAllowedToDelete}}
+                <div>
+                    <a href='' class='delete-link' comment-id='{{this.parent.id}}'
+                        commenter='{{this.parent.username}}'>Delete</a>
+                </div>
+                {{/if}}
+                <!-- Reply form and container -->
+                <a href='' class='reply-link'>Reply</a>
+                <div class='reply-container' style='display: none;'>
+                    <div class='reply-css-container'>
+                        <div>
+                        <img src='/images/{{this.currentAavatar}}' alt='avatar-icon' class='avatar-icon'>
+                        <p>{{this.currentBlogger}}</p>
+                    </div>
+                    <div class="comment-input">
+                        <form action='/comments/{{this.parent.id}}/newreply' method='POST' placeholder='Post your reply'
+                        class='reply-form'>
+                        <textarea class='reply-text' name='replyText' required></textarea><br>
+                        <div class='post-btn-frame'><button type='submit' class='comment-btn post-btn'>Reply</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Render replies to this comment -->
+            {{#if this.parent.replies.length}}
+            {{#each this.parent.replies}}
+            <div class='nested-comment'>
+                <div class="comment-nested-text">
+                    <p>{{this.parent.texts}}</p>
+                </div>
+                <div class='commenter-notation'><a href='/author/{{this.parent.username}}'>{{this.parent.username}}</a> replied to 
+                    <a href='/author/{{../this.parent.username}}'>{{../this.parent.username}}</a> at {{this.parent.commentTime}}</div>
+                {{#if this.userIsAllowedToDelete}}
+                <div>
+                    <a href='' class='delete-link' comment-id='{{this.parent.id}}'
+                        commenter='{{this.parent.username}}'>Delete</a>
+                </div>
+                {{/if}}
+                <!-- Reply form and container -->
+                <a href='' class='reply-link'>Reply</a>
+                <div class='reply-container' style='display: none;'>
+                    <div class='reply-css-container'>
+                        <div>
+                        <img src='/images/{{this.currentAavatar}}' alt='avatar-icon' class='avatar-icon'>
+                        <p>{{this.currentBlogger}}</p>
+                        </div>
+                        <div class="comment-input">
+                            <form action='/comments/{{this.parent.id}}/newreply' method='POST' placeholder='Post your reply'
+                            class='reply-form'>
+                            <textarea class='reply-text' name='replyText' required></textarea><br>
+                            <div class='post-btn-frame'><button type='submit' class='comment-btn post-btn'>Reply</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Render second-level replies -->
+                {{#if this.parent.replies.length}}
+                {{#each this.parent.replies}}
+                <div class='nested-comment'>
+                    <div class="comment-nested-text">
+                        <p>{{this.parent.texts}}</p>
+                    </div>
+                    <div class='commenter-notation'><a href='/author/{{this.parent.username}}'>{{this.parent.username}}</a> replied to 
+                        <a href='/author/{{../this.parent.username}}'>{{../this.parent.username}}</a> at {{this.parent.commentTime}}</div>
+                <div>
+                    {{#if this.userIsAllowedToDelete}}
+                    <div>
+                        <a href='' class='delete-link' comment-id='{{this.parent.id}}'
+                            commenter='{{this.parent.username}}'>Delete</a>
+                    </div>
+                    {{/if}}
+                    <!-- Reply form and container -->
+                    <a href='' class='reply-link'>Reply</a>
+                    <div class='reply-container' style='display: none;'>
+                        <div class='reply-css-container'>
+                            <div>
+                            <img src='/images/{{this.currentAavatar}}' alt='avatar-icon' class='avatar-icon'>
+                            <p>{{this.currentBlogger}}</p>
+                            </div>
+                            <div class="comment-input">
+                                <form action='/comments/{{this.parent.id}}/newreply' method='POST' placeholder='Post your reply'
+                                class='reply-form'>
+                                <textarea class='reply-text' name='replyText' required></textarea><br>
+                                <div class='post-btn-frame'><button type='submit' class='comment-btn post-btn'>Reply</button></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{/each}}
+                {{/if}}
+
+            </div>
+            {{/each}}
+            {{/if}}
+            <br>
+            {{!-- <a>View all replies</a> --}}
+            <hr width='100px' align='left' color='Olive'>
+        </div>
+        {{/each}}
+    </div>
+</div>
+<script type='text/javascript' src='/js/comments.js'></script>

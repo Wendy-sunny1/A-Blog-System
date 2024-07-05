@@ -1,0 +1,41 @@
+<link rel='stylesheet' href='/css/subscription.css' />
+
+<div class='container'>
+    {{#if authorNamesArray}}
+        <h3>Your authors:</h3>
+        <ul>
+            {{#each authorNamesArray}}
+                <li class='list'>
+                    <div class='avatar'>
+                        <img
+                            class='icon'
+                            src='/images/{{this.avatarid}}.png'
+                            alt=''
+                        />
+                    </div>
+
+                    <div class='name'>
+                        <a
+                            href='./author/{{this.username}}'
+                        >{{this.username}}</a>
+                    </div>
+                    <div class='button'>
+                        <form action='./deleteMyAuthor' method='POST'>
+                            <input
+                                name='userID'
+                                type='hidden'
+                                value='{{this.id}}'
+                            />
+                            <button
+                                type='submit'
+                                class='btn'
+                            >Unsubscribe</button>
+                        </form>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No authors here.</p>
+    {{/if}}
+</div>

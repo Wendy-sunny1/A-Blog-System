@@ -1,0 +1,30 @@
+{
+    "name": "personal-blogging-system",
+    "version": "1.0.0.2023",
+    "private": true,
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon --watch src --delay 0.5s src/index.js"
+    },
+    "dependencies": {
+        "bcrypt": "^5.1.1",
+        "body-parser": "^1.20.2",
+        "cookie-parser": "^1.4.6",
+        "ember-truth-helpers": "^4.0.3",
+        "express": "^4.18.2",
+        "express-handlebars": "^7.1.2",
+        "jimp": "^0.22.10",
+        "express-session": "^1.17.3",
+        "morgan": "^1.10.0",
+        "multer": "^1.4.5-lts.1",
+        "sharp": "^0.32.6",
+        "sql-template-strings": "^2.2.2",
+        "sqlite": "^5.0.1",
+        "sqlite3": "^5.1.6",
+        "uuid": "^9.0.1"
+    },
+    "devDependencies": {
+        "nodemon": "^3.0.1",
+        "prettier": "^3.0.3"
+    }
+}

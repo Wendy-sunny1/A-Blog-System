@@ -1,0 +1,54 @@
+.tempImg {
+    width: 400px;
+    height: auto;
+}
+
+.article-img {
+    width: 400px;
+    height: auto;
+}
+.invisible {
+    display: none;
+}
+
+#id,
+#uid {
+    display: none;
+}
+
+#editor-container {
+    height: 150px;
+}
+
+#imgTempContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+#imgTempContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.avatar-icon {
+    width: 50px;
+}
+
+.notificationContainer{
+    position: relative;
+    display: inline-block;
+    z-index: 2;
+}
+
+#notificationNum{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #ccc;
+    color: black;
+    padding: 5px 5px;
+    border-radius: 100%;
+    z-index: 1;
+}

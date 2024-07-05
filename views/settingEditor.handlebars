@@ -1,0 +1,119 @@
+<link rel='stylesheet' href='/css/settings.css' />
+<script type='text/javascript' src='/js/setting.js'></script>
+
+<body>
+     
+    <div class='SettingContainer'>
+        {{#if toastMessage}}
+                <p class="toastMessage">{{toastMessage}}</p>
+            {{/if}}
+        <form action='./changeProfile' method='POST'>
+            <div>
+                <h1>Settings</h1>
+            </div>
+
+            <div class='settingContainer02'>
+
+                <input
+                    type='text'
+                    name='newUsername'
+                    id='newUsername'
+                    placeholder='Change username'
+                    value='{{user.username}}'
+                />
+                <div id='ChangeUsernameTakenError' style='color: red;'></div>
+
+                <input
+                    type='text'
+                    name='newPassword'
+                    id='newPassword'
+                    placeholder='Change password'
+                />
+
+                <input
+                    type='date'
+                    name='newBirthday'
+                    id='newBirthday'
+                    value='{{user.dob}}'
+                />
+
+                <input
+                    type='text'
+                    name='newRealName'
+                    id='newRealName'
+                    placeholder='Change Realname'
+                    value='{{user.realname}}'
+                />
+
+                <input
+                    type='text'
+                    name='newDescription'
+                    id='newDescription'
+                    placeholder='Change Description'
+                    value='{{user.description}}'
+                />
+
+                <label for='changeAvatar'>Change Avatar</label>
+                <label>
+                    <div class='avatar-container'>
+                        <input type='radio' name='avatar' value='1' />
+                        <img src='images/1.png' alt='Avatar 1' />
+                    </div>
+                </label>
+                <label>
+                    <div class='avatar-container'>
+                        <input type='radio' name='avatar' value='2' />
+                        <img src='images/2.png' alt='Avatar 2' />
+                    </div>
+                </label>
+                <label>
+                    <div class='avatar-container'>
+                        <input type='radio' name='avatar' value='3' />
+                        <img src='images/3.png' alt='Avatar 3' />
+                    </div>
+                </label>
+
+                {{! <button type='submit' name='changeRestOfSetting'><a
+                        href='/user'
+                    >Save</a></button> }}
+                <button type='submit' name='changeProfile'>
+                    Save</button>
+            </div>
+        </form>
+    </div>
+
+    <div class='deleteButton'>
+        <form
+            id='deleteAccountForm'
+            action='./deleteCurrentAccount'
+            method='POST'
+        >
+            <h4>Do you wish to decease your account?</h4>
+            <p>By entering your username below to confirm</p>
+            <label for='deleteAccount' style='color: red;'>Delete Account</label>
+            <input
+                type='text'
+                name='deleteAccount'
+                id='deleteCurrentAccount'
+                placeholder='Enter username'
+                required
+            />
+        
+            <button
+                type='submit'
+                id='submitButton'
+                onclick='deleteAccountAlert()'
+            >Delete</button>
+            
+        </form>
+    </div>
+
+    
+
+    <div class='BackHomeButton'>
+        <a href='./login'>
+            <button>Back to Dashboard</button>
+        </a>
+    </div>
+
+</body>

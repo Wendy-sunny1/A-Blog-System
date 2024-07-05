@@ -1,0 +1,77 @@
+<link rel='stylesheet' type='text/css' href='/css/analytics.css' />
+<script
+    src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js'
+></script>
+
+<div class='container'>
+    <h1>Here's your basic statistics!</h1>
+    <hr />
+    <h2>You have: </h2>
+
+    <div class='basicStatistics'>
+        <div class='totalLikes'>
+            <button type='button' class='btn'>{{articleTotalLikes}}
+                Likes</button>
+        </div>
+
+        <div class='totalComments'>
+            <button type='button' class='btn'>{{articleTotalComments}}
+                Comments</button>
+        </div>
+
+        <div class='totalFollowers'>
+            <button type='button' class='btn'>{{numberOfSubcribers}}
+                Followers</button>
+        </div>
+    </div>
+    <hr />
+
+    <h2>Your Top 3 Articles</h2>
+
+    <ul>
+        <div class='articleContainer'>
+            {{#each articles}}
+                <div class='singleArticleContainer'>
+                    <li>
+                        <div class='details'>
+                            <h2>Rank: {{indexPlusOne @index}}</h2>
+                            <h3>Title: {{this.title}}</h3>
+                            <em><p class='time'>Publish Time:
+                                    {{this.publishTime}}</p></em>
+                            {{#if this.imageURL}}
+                                <div class='imgContainer'>
+                                    <img
+                                        class='feature__image'
+                                        src={{this.imageURL}}
+                                        alt=''
+                                    />
+                                </div>
+                            {{else}}
+                            {{/if}}
+                            <p>Total comments: {{this.totalComments}}</p>
+                            <p>Total likes: {{this.totalLikes}}</p>
+                            <p>Popularity: {{this.popularity}}</p>
+                        </div>
+                    </li>
+                </div>
+            {{/each}}
+        </div>
+    </ul>
+    <hr />
+
+    <h2>Daily Comments</h2>
+    <div class='commentsChart'>
+        <canvas id='myChart' style='width:100%;max-width:1000px'></canvas>
+
+        <script>
+            const xValues =
+            {{{xValues}}}; const yValues = [{{yValues}}]; new Chart("myChart", {
+            type: "line", data: { labels: xValues, datasets: [{ fill: false,
+            lineTension: 0, backgroundColor: "rgba(37,132,255,1.0)",
+            borderColor: "rgba(37,132,255,1.0)", data: yValues }] }, options: {
+            legend: {display: false}, scales: { yAxes: [{ticks: {min: 0,
+            max:10}}], } } });
+        </script>
+    </div>
+
+</div>

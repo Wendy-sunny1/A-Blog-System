@@ -1,0 +1,20 @@
+h1 {
+    font-size: 4rem;
+}
+
+.singleArticleImgContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.article-img {
+    margin-top: 5rem;
+}
+
+#article-container {
+    margin: 5rem 12rem 0 12rem;
+}
+
+#quillContainer {
+    margin-top: 5rem;
+}

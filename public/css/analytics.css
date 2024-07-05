@@ -1,0 +1,49 @@
+.container {
+    margin: 20px;
+}
+
+.basicStatistics {
+    display: flex;
+    justify-content: space-between;
+    grid-area: stats;
+}
+
+.singleArticleContainer li,
+.details,
+.details h2,
+.details h3,
+.details p {
+    margin: 10px;
+}
+
+.singleArticleContainer {
+    border: 2px solid var(--color-primary);
+    padding: 20px;
+    margin: 30px;
+    border-radius: 40px;
+}
+
+.singleArticleContainer:hover {
+    transform: scale(1.2);
+    transition: transform 0.3s;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.time {
+    color: grey;
+    font-size: smaller;
+}
+
+.articleContainer {
+    display: flex;
+}
+
+.feature__image {
+    width: 200px;
+    height: auto;
+}

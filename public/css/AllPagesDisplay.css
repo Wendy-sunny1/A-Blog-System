@@ -1,0 +1,32 @@
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* font-style:italic; */
+}
+
+
+body{
+    /* background-color: #416a59; */
+    background-repeat: round;
+    backdrop-filter: blur(5px);
+
+ }
+
+
+
+.logoForNav{
+    width: 50px;
+    max-width: 100%;
+    height: auto;
+}
+
+.containerForAll{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 20px;
+    margin: 20px 0px 20px 0px;
+    
+}
+

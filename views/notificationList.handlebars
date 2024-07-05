@@ -1,0 +1,49 @@
+<link rel='stylesheet' href='/css/subscription.css' />
+
+<div class='container'>
+{{#if notificationList}}
+    <ul>
+        {{#each notificationList}}
+            {{#if this.isNewArticle}}
+                <li class='list'>
+                    <div class='avatar'>
+                    <img class='icon' src="images/{{this.avatar}}" alt="">
+                    </div>
+
+                    <div class='name'>
+                    <a href="./articles/{{this.articleID}}" class="notification-item" notice-id="{{this.notificateID}}">{{this.notificationContent}}</a>
+                    </div>
+                </li>
+            {{/if}}
+
+            {{#if this.isNewComment}}
+                <li class='list'>
+                    <div class='avatar'>
+                    <img class='icon' src="images/{{this.avatar}}" alt="">
+                    </div>
+
+                    <div class='name'>
+                    <a href="./articles/{{this.articleID}}" class="notification-item" notice-id="{{this.notificateID}}">{{this.notificationContent}}</a>
+                    </div>
+                </li>
+            {{/if}}
+
+            {{#if this.isNewSubscriber}}
+                <li class='list'>
+                    <div class='avatar'>
+                    <img class='icon' src="images/{{this.avatar}}" alt="">
+                    </div>
+
+                    <div class='name'>
+                    <a href="./author/{{this.subscriberName}}" class="notification-item" notice-id="{{this.notificateID}}">{{this.notificationContent}}</a>
+                    </div>
+                </li>
+            {{/if}}
+        {{/each}}
+    </ul>
+{{else}}
+    <h3>No notifications here.</h3>
+{{/if}}
+</div>
+
+<script type="text/javascript" src="/js/notification.js"></script>

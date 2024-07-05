@@ -1,0 +1,116 @@
+
+.logoContainer {
+    overflow: hidden;
+    padding: 0px;
+}
+
+.logo {
+    float: left; 
+    height: 500px;
+    width: 500px;
+    padding-left: 100px;
+}
+
+.content {
+    float: right; 
+    height: 1000px;
+    width: 500px;
+    padding-top: 120px;
+    
+}
+
+.slogan{
+    font-size: 50px;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.ButtonDesign{
+    border: 2px solid gainsboro;
+    color: white;
+    border-radius: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px ;
+    padding-bottom: 10px;
+    background-color: orange;
+    margin-left: 260px;
+    position: fixed;
+    margin-left: 260px;
+    transform: translateY(0);
+    transition: transform 3s;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    outline: none;
+    border: none;
+}
+
+.buttonElement{
+    text-decoration: none !important;
+    color: white !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.buttonElement:hover{
+    outline: none;
+}
+
+.articlesOnLandingPage{
+    margin-top: -550px;
+    padding-left: 400px;
+    border: 10px;
+    border-color: orange;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.scrollDown{
+    padding-top:50px;
+    font-size: 10px;
+    margin-left: 180px;
+}
+
+.articleElement{
+    color: black;
+    border: 2px solid orange;
+    background-color: white;
+    border-radius:20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 10px ;
+    padding-bottom: 10px;
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    transition: transform 0.5s;
+}
+
+li{
+    list-style-type: none;
+}
+
+.timeElement{
+    color: black;
+    font-size: 6px;
+    padding-left: 130px;
+}
+
+a:hover{
+    background-color: black;
+    border: 2px solid gainsboro;
+    color: white;
+    cursor: pointer;
+    -webkit-transition: background-color 1s ease-out;
+    -moz-transition: background-color 1s ease-out;
+    -o-transition: background-color 1s ease-out;
+    transition: background-color 1s ease-out;
+}
+
+button:hover{
+    background-color: black;
+    cursor: pointer;
+     -webkit-transition: background-color 0.5s ease-out; 
+    -moz-transition: background-color 0.5s ease-out;
+    -o-transition: background-color 0.5s ease-out; 
+    transition: background-color 0.5s ease-out;
+
+}

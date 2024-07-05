@@ -1,0 +1,35 @@
+<div>
+    <form action='/searchAndSortArticles' method='POST'>
+        <p>Search and Sort All Articles: </p>
+        <input name='searchTerm' type='text' id='search-input' placeholder='Search articles' />
+
+        <select id='sort-by' name='userSelection'>
+            <option value='title'>Sort by Title</option>
+            <option value='username'>Sort by UserName</option>
+            <option value='publishTime'>Sort by Date</option>
+        </select>
+        <button type='submit'>Submit!</button>
+    </form>
+</div>
+
+<ol>
+    {{#each allArticles}}
+    <li>
+        <div>
+            <a href='./articles/{{this.id}}'>
+                <h1>Title:
+                    {{this.title}}</h1>
+            </a>
+
+            <p>{{this.publishTime}}</p>
+        </div>
+        <div>
+            <a href='/author/{{this.username}}'>{{this.username}}</a>
+        </div>
+        {{!-- <button class='like-button-{{this.id}}'>Like</button>
+        <p>Likes: <span id='likes-count'>0</span></p> --}}
+    </li>
+    <br />
+    {{/each}}
+
+</ol>

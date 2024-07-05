@@ -1,0 +1,162 @@
+<link rel='stylesheet' type='text/css' href='/css/userHomepage.css' />
+
+<span id='uid'>{{user.id}}</span>
+
+<div class='userDetailContainer'>
+    <div class='avatar'>
+        <img src='/images/{{user.avatarFileName}}' />
+    </div>
+    <div class='notification'>
+        {{!-- {{! Wendy }}
+        <img class='bell' src='/images/bell.jpeg' alt='' />
+        <a href='/showNotificationList'>You have
+            {{number}}
+            unread notifications.</a>
+        {{! Wendy }} --}}
+    </div>
+
+    <div class='username'>
+        <h1>{{user.username}}</h1>
+    </div>
+
+    <div class='userDescription'>
+        <p>Description: {{user.description}}</p>
+    </div>
+
+    <div class='userStatistics'>
+        <div class='articleNo'>
+            <button type='button' class='btn'><a href='#target1'>{{articleNo}}
+                    Posts</a></button>
+        </div>
+
+        <div class='followingDetail'>
+            <form action='/retriveMyAuthorsNamesByMyID' method='POST'>
+                <input name='userID' type='hidden' value='{{user.id}}' />
+                <button type='submit' class='btn'>{{numberOfauthors}}
+                    Followings</button>
+            </form>
+        </div>
+
+        <div class='followerDetail'>
+            <form action='/retriveMySubscribersNamesByMyID' method='POST'>
+                <input name='userID' type='hidden' value='{{user.id}}' />
+                <button type='submit' class='btn'>{{numberOfSubcribers}}
+                    Followers</button>
+            </form>
+        </div>
+    </div>
+
+    <div class='editButton'>
+        <form action='/settingEditor' method='POST'>
+            <input name='userID' type='hidden' value='{{user}}' />
+            <button type='submit' class='btn'>Edit profile</button>
+        </form>
+    </div>
+</div>
+
+<div class='analyticsButton'>
+    <form action='/userAnalytics' method='POST'>
+        <input name='userID' type='hidden' />
+        <button type='submit' class='btn'>View your statistics</button>
+    </form>
+</div>
+
+<form action='/searchAndSortArticlesForCurrentUser' method='POST'>
+    <section class='block container block-domain'>
+        <header class='block__header' data-aos='slide-up'>
+            <h2 id='target1'>Browse Your Articles</h2>
+            <p>
+                Search and sort your article lists by article title and date.
+
+            </p>
+        </header>
+
+        <div class='input-group'>
+            <input
+                name='searchTerm'
+                type='text'
+                class='input'
+                id='search-input'
+                placeholder='Search article lists'
+                autocomplete='off'
+            />
+            <button type='submit' class='btn btn--accent'>
+                <img class='icon icon--white' src='/images/search.svg' alt='' />
+                Search
+            </button>
+
+            <select class='input' id='sort-by' name='userSelection'>
+                <option value='title'>Sort by Title</option>
+                <option value='publishTime'>Sort by Date</option>
+            </select>
+        </div>
+
+    </section>
+</form>
+
+{{#each allArticles}}
+    {{#if this.imageURL}}
+        <article class='grid grid--1x2 feature articleGrid'>
+            <div class='feature__content' data-aos='fade-right'>
+                <h3 class='feature__heading'>{{this.title}}</h3>
+                <div>
+                    <span>{{this.publishTime}}</span>
+                </div>
+                <p id='homePageParagraph'>
+                    {{{this.content}}}
+                </p>
+                <a href='/articles/own/{{this.id}}' class='link-arrow'>Edit</a>
+            </div>
+
+            <picture class='pic' data-aos='zoom-in-left'>
+                <img class='feature__image' src={{this.imageURL}} alt='' />
+            </picture>
+        </article>
+    {{else}}
+        <article class='grid grid--1x1 feature articleGrid'>
+            <div class='feature__content' data-aos='fade-right'>
+
+                <h3 class='feature__heading'>{{this.title}}</h3>
+                <div>
+                    <span>{{this.publishTime}}</span>
+                </div>
+                <p>
+                    {{{this.content}}}
+                </p>
+                <a href='/articles/own/{{this.id}}' class='link-arrow'>Edit</a>
+            </div>
+        </article>
+    {{/if}}
+{{/each}}
+
+{{! quillJS Editor }}
+<div id='quillContainer'>
+    <div id='editor-container'></div>
+</div>
+
+{{! Image Upload Form: }}
+<form id='imgUploadForm' enctype='multipart/form-data'>
+    <div id='imgUploadGroup'>
+        <label for='inpFile'>Upload an image (optional) for your article here!
+        </label>
+        <input
+            type='file'
+            name='imageFile'
+            id='fileInput'
+            accept='.png,.jpg,.jpeg,.bmp'
+        />
+        <button class='btn btn--secondary' type='button' id='imgUploadBtn'>click
+            to upload</button>
+    </div>
+</form>
+
+<div id='imgTempContainer'>
+
+</div>
+
+<div id='btnAddNewArticlesContainer'>
+    <button class='btn btn--accent btnAddNewArticles'>click to create new
+        articles</button>
+</div>
+
+<script src='/js/WYSIWYG.js'></script>

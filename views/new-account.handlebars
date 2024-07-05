@@ -1,0 +1,119 @@
+<link rel='stylesheet' href='/css/newAccount.css' />
+<div class='container'>
+    {{#if toastMessage}}
+        <p class='toastMessageRegister'>{{toastMessage}}</p>
+    {{/if}}
+
+    <form action='./newAccount' method='POST'>
+        <div>
+            <h1>New Account</h1>
+            <input
+                type='text'
+                name='username'
+                id='username'
+                placeholder='Username'
+                required
+            />
+            <div id='usernameError' style='color: red;'></div>
+        </div>
+
+        <div>
+            <input
+                type='text'
+                name='realname'
+                placeholder='Legal name'
+                required
+            />
+        </div>
+
+        <div>
+            <input
+                type='password'
+                id='password'
+                name='password'
+                placeholder='Password'
+                required
+            />
+        </div>
+
+        <div>
+            <input
+                type='password'
+                id='confirmPassword'
+                name='confirmPassword'
+                placeholder='Confirm password'
+                required
+            />
+            <span id='passwordMatchMessage'></span>
+        </div>
+
+        <div>
+            <input
+                type='date'
+                name='dob'
+                placeholder='Date of Birth'
+                required
+            />
+        </div>
+
+        <div>
+            <input
+                type='text'
+                name='description'
+                placeholder='Description'
+                required
+            />
+        </div>
+
+        <!-- Other registration fields -->
+
+        <p>Select an Avatar</p>
+        <div id='avatarOptions'>
+            <label>
+                <input type='radio' name='avatar' value='1' />
+                <img src='images/1.png' alt='Avatar 1' />
+            </label>
+            <label>
+                <input type='radio' name='avatar' value='2' />
+                <img src='images/2.png' alt='Avatar 2' />
+            </label>
+            <label>
+                <input type='radio' name='avatar' value='3' />
+                <img src='images/3.png' alt='Avatar 3' />
+            </label>
+            <!-- Add more avatar options here -->
+        </div>
+
+        <div class='submitButton'>
+            <a href='/logout'><button type='submit'>Create Account</button></a>
+        </div>
+
+        <p>Reminder: Please select the date for your birthday.</p>
+        <a href='./'><p>Still need to think about it?</p></a>
+    </form>
+
+</div>
+
+<script>
+    const passwordInput = document.getElementById('password'); const
+    confirmPasswordInput = document.getElementById('confirmPassword'); const
+    passwordMatchMessage = document.getElementById('passwordMatchMessage');
+    confirmPasswordInput.addEventListener('input', () => { const password
+    =passwordInput.value; const confirmPassword = confirmPasswordInput.value;
+    if(password === confirmPassword) { // if passwords match
+    passwordMatchMessage.textContent = ''; } else { // if passwords do not match
+    passwordMatchMessage.textContent = 'Passwords do not match';
+    passwordMatchMessage.style.color = 'red'; } });
+    document.addEventListener('DOMContentLoaded', function () { const
+    usernameInput = document.getElementById('username'); const usernameError =
+    document.getElementById('usernameError');
+    usernameInput.addEventListener('input', () => { const username =
+    usernameInput.value; if (username) { fetch('/checkUsernameAvailability', {
+    method: 'POST', headers: { 'Content-Type': 'application/json', }, body:
+    JSON.stringify({ username: username }), }) .then((response) =>
+    response.json()) .then((data) => { if (data.usernameExists) {
+    usernameError.textContent = 'Username already exists.'; } else {
+    usernameError.textContent = ''; } }) .catch((error) => {
+    console.error('Error checking username availability:', error); }); } }); });
+
+</script>

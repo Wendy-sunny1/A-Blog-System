@@ -1,0 +1,108 @@
+<html>
+    <head>
+        <meta charset='UTF-8' />
+        {{#if title}}
+            <title>{{title}}</title>
+        {{else}}
+
+            <title>Group 1 Blog</title>
+        {{/if}}
+        {{! links & scripts for Ian's design }}
+        <link rel='icon' href='/images/computer.svg' type='image/svg+xml' />
+        <link rel='preconnect' href='https://fonts.googleapis.com' />
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin />
+        <link
+            href='https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap'
+            rel='stylesheet'
+        />
+
+        <link rel='stylesheet' href='/css/site.css' />
+        <link rel='stylesheet' href='/css/normalize.css' />
+        <link rel='stylesheet' href='/css/styles-Ian.css' />
+        <link rel='stylesheet' href='https://unpkg.com/aos@next/dist/aos.css' />
+
+        {{! links & scripts for quillJS }}
+
+        {{!-- <title>Moshify - A place where share your thoughts</title>
+        {{/if}}
+        <link rel='stylesheet' href='./css/site.css' />
+        <link rel='icon' href='images/newlogo.png' type='image/jpeg' />
+        <link rel='stylesheet' href='./css/AllPagesDisplay.css' />
+ --}}
+
+        <link
+            rel='stylesheet'
+            href='https://cdn.quilljs.com/1.3.6/quill.snow.css'
+        />
+        <link
+            rel='stylesheet'
+            href='https://cdn.quilljs.com/1.3.6/quill.core.css'
+        />
+
+        <script src='https://cdn.quilljs.com/1.3.6/quill.js'></script>
+        <script
+            src='https://cdn.jsdelivr.net/npm/quill-image-resize-module@3.0.0/image-resize.min.js'
+        ></script>
+    </head>
+
+    <body>
+
+        <header>
+            <nav class='nav collapsible'>
+                <div id='titleContainer'>
+                    <a href='/user'>
+                        <svg class='nav__brand icon icon--white'>
+                            <use xlink:href='/images/sprite.svg#computer'></use>
+                        </svg>
+                    </a>
+                    <span id='title'>Group 1 Blog</span>
+
+                </div>
+                <svg class='icon icon--white nav__toggler'>
+                    <use xlink:href='/images/sprite.svg#menu'></use>
+                </svg>
+                <ul class='list nav__list collapsible__content'>
+                    {{#if user}}
+                        <div class='notificationContainer'>
+                            <li class='nav__item' id='notificationDiv'><a
+                                    href='/showNotificationList'
+                                >Notification
+                                    <div id='notificationNum'>{{number}}</div>
+                                </a></li>
+                        </div>
+                    {{/if}}
+                    <li class='nav__item'><a href='/#target'>Lobby</a></li>
+                    <li class='nav__item'><a href='/user/'>Home</a></li>
+                    <li class='nav__item'><a href='/newAccount'>New Account</a></li>
+                    <li class='nav__item'>
+                        {{#if user}}
+                            <a href='/logout'>Log Out</a>
+                        {{else}}
+                            <a href='/login'>Log In</a>
+                        {{/if}}
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        {{! <div class="containerForAll">
+            <div class="logoContainer">
+                <a href="./welcome"> <img src='images/newlogo.png' alt='Logo' class='logoForNav'></a>
+            </div>
+
+            <div class="nav">
+                <a href="#">Home</a>
+                <a href="#">Articles</a>
+                <a href="#">Support</a>
+                <a href="#">Analystic</a>
+            </div>
+        </div> }}
+
+        {{{body}}}
+
+        <script src='/js/collapsible.js'></script>
+        <script src='https://unpkg.com/aos@next/dist/aos.js'></script>
+        <script>AOS.init()</script>
+    </body>
+
+</html>

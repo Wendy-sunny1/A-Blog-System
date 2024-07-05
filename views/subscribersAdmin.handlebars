@@ -1,0 +1,39 @@
+<link rel='stylesheet' href='/css/subscription.css' />
+
+<div class='container'>
+    {{#if subscriberNamesArray}}
+        {{!-- <h3>You have {{subscriberNamesArray.length}} subscribers.</h3> --}}
+        <h3>Your subscribers: </h3>
+        <ul>
+            {{#each subscriberNamesArray}}
+                <li class='list'>
+                    <div class='avatar'>
+                        <img
+                            class='icon'
+                            src='/images/{{this.avatarid}}.png'
+                            alt=''
+                        />
+                    </div>
+
+                    <div class='name'>
+                        <a
+                            href='./author/{{this.username}}'
+                        >{{this.username}}</a>
+                    </div>
+                    <div class='button'>
+                        <form action='./deleteMySubscriber' method='POST'>
+                            <input
+                                name='userID'
+                                type='hidden'
+                                value='{{this.id}}'
+                            />
+                            <button type='submit' class='btn'>Remove</button>
+                        </form>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <p>No subscribers here.</p>
+    {{/if}}
+</div>

@@ -1,0 +1,92 @@
+.userDetailContainer {
+    margin: 10px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 7fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+        'avt um nf'
+        'avt des des'
+        'avt stats stats'
+        'eb eb eb';
+    row-gap: 2px;
+    column-gap: 2px;
+    align-items: center;
+}
+
+.notification {
+    grid-area: nf;
+    margin-left: 30px;
+}
+
+.bell {
+    height: 30px;
+    width: auto;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 25px;
+    grid-area: um;
+    margin-left: 50px;
+}
+
+.username h1 {
+    margin: 0;
+}
+
+.avatar {
+    grid-area: avt;
+}
+
+.avatar img {
+    height: 200px;
+    width: 200px;
+    grid-area: img;
+}
+
+.userDescription p {
+    font-size: 20px;
+    grid-area: des;
+    margin-left: 50px;
+}
+
+.userStatistics {
+    display: flex;
+    justify-content: space-between;
+    grid-area: stats;
+    margin-left: 50px;
+    margin-right: 400px;
+}
+
+.btn {
+    margin: 0 10px;
+}
+.btn:hover {
+    background-color: #e4d5c6;
+}
+
+.editButton {
+    grid-area: eb;
+}
+
+.followerDetail {
+    grid-area: fr;
+}
+
+.followingDetail {
+    grid-area: fl;
+}
+
+.analyticsButton button {
+    color: white;
+    background-color: var(--color-accent);
+    margin: 0 30px;
+}
+
+.articleNo a:link,
+.articleNo a:visited,
+.articleNo a:hover,
+.articleNo a:active {
+    text-decoration: none;
+    color: black;
+}

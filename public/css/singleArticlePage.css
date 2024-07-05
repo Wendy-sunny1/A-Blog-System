@@ -1,0 +1,116 @@
+/* Body and General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header Styles */
+.header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+/* Article Styles */
+.articleGrid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.feature__heading {
+    font-size: 2.5rem;
+    color: #333;
+}
+
+.feature__content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#right-image-frame {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+#article_image {
+    top: 50vw;
+}
+
+.like-from-frame {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.btn-secondary {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.btn {
+    /* Existing styles for the button */
+    /* Additional styles */
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.comment-btn {
+    border-radius: 20px;
+    border: 0;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #007bff;
+    color: #fff;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 2px;
+}
+
+/* Toggle Button Styles */
+.toggle-button {
+    cursor: pointer;
+    color: #007bff;
+}
+
+.toggle-button:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}

@@ -1,0 +1,73 @@
+<span id='uid'>{{user.id}}</span>
+
+<div>
+    <form action='/searchAndSortArticlesForCurrentUser' method='POST'>
+        <p>Search and Sort Your Articles: </p>
+        <input
+            name='searchTerm'
+            type='text'
+            id='search-input'
+            placeholder='Search articles'
+        />
+
+        <select id='sort-by' name='userSelection'>
+            <option value='title'>Sort by Title</option>
+            <option value='publishTime'>Sort by Date</option>
+        </select>
+        <button type='submit'>Submit!</button>
+    </form>
+</div>
+
+{{#if toastMessage}}
+    <p>{{toastMessage}}</p>
+{{/if}}
+
+<ul>
+    {{#each allArticles}}
+        <li>
+            <div>
+                <a href='./articles/own/{{this.id}}'>
+                    <h1>{{this.title}}</h1>
+                </a>
+                <p>{{this.publishTime}}</p>
+            </div>
+
+            <div>
+                {{#if this.imageURL}}
+                    <img class='article-img' src='{{this.imageURL}}' />
+                {{/if}}
+            </div>
+        </li>
+        <br />
+    {{/each}}
+</ul>
+
+{{! quillJS Editor }}
+<div id='editor-container'></div>
+
+{{! Image Upload Form: }}
+<form id='imgUploadForm' enctype='multipart/form-data'>
+    <div>
+        <label for='inpFile'>Upload an image (optional) for your article here!</label>
+        <input
+            type='file'
+            name='imageFile'
+            id='fileInput'
+            accept='.png,.jpg,.jpeg,.bmp'
+        />
+    </div>
+
+    <div>
+        <button type='button' id='imgUploadBtn'>click to upload</button>
+    </div>
+</form>
+
+<button class='btnAddNewArticles'>click to create new articles</button>
+
+<script src='/js/WYSIWYG.js'></script>
+
+{{! Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facilis non ea ex, recusandae at perspiciatis? Nihil veniam debitis aliquam aliquid consequuntur assumenda quasi nam accusamus. Nemo dolorum et commodi earum autem hic tempora corrupti, nihil voluptas adipisci eveniet sint natus temporibus architecto magnam aperiam, minima eaque ad iure explicabo enim? Aliquid inventore, veritatis, animi iusto accusamus nihil ducimus assumenda sed obcaecati suscipit ratione, eveniet ea quas debitis nobis porro molestiae temporibus. Recusandae illum ex quas accusantium excepturi? Porro quos, sed molestiae maxime doloremque ipsam eaque temporibus commodi obcaecati, quia reiciendis possimus ea velit provident labore impedit nam fugiat maiores illo!
+
+Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni omnis quos assumenda sunt aut, numquam iste ex earum in provident voluptas optio. Harum, velit quam. Totam, maxime atque quasi rem nihil accusamus recusandae officia modi, perspiciatis at molestiae vel deserunt nam vero sequi placeat voluptate delectus praesentium! Cum delectus laudantium facilis quam vitae similique alias esse! Deleniti doloremque laborum quod nesciunt eaque totam quis soluta dignissimos non hic asperiores, illo modi expedita quam rerum error consequuntur tempore, fuga nostrum. Alias, nulla? Quaerat velit excepturi accusantium animi, qui, unde alias expedita labore impedit similique modi odio inventore corporis magni deserunt eius.
+
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia aliquam repellat quisquam, id inventore similique laborum minima. Molestiae, sapiente. Ducimus numquam non eligendi corporis. Vero ullam quidem eos pariatur et neque cupiditate, ipsum quia, laborum consectetur facere? Enim itaque qui officiis odit ipsam, error nisi non asperiores nobis ab quia repellat molestiae labore quisquam deleniti voluptates sed placeat. Temporibus voluptas quidem ratione molestiae expedita aliquam necessitatibus, libero perferendis nemo perspiciatis veniam aspernatur voluptatum, autem, est exercitationem obcaecati itaque recusandae nihil eligendi saepe! Odit beatae, repudiandae quam voluptate dolore quibusdam natus, autem sequi consectetur voluptatibus cumque vero officia nam eaque soluta. }}

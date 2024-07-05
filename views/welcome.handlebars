@@ -1,0 +1,65 @@
+{{!-- <link rel="stylesheet" href="./css/landingPage.css">
+
+<div class="logoContainer">
+    <img src='images/logoBlack.png' alt='Logo' class='logo'>
+
+    <div class="content">
+
+        <div class="slogan">
+            <p>A place where share your thoughts.</p>
+        </div>
+        
+        <div class="loginButton">
+
+            <button class="ButtonDesign">
+                <a class="buttonElement" href='./login'><b>Sign in</b></a>
+            </button>
+
+            <div class="scrollDown">
+                <p>- Scroll Down for articles in our wonderful community -</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div class="articlesOnLandingPage">
+    <ul>
+        
+        {{#each allArticles}}
+            <br>
+            <li >
+                <br>
+                <a class="articleElement" href="./AllArticles">{{this.title}}</a> 
+                <div class="timeElement">{{this.publishTime}}</div>
+            </li>
+
+        {{/each}}
+    </ul>
+</div>
+
+<script>
+    
+const scrollButton = document.querySelector(".ButtonDesign");
+window.addEventListener("scroll", function() {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        // once user scrolls over 20px, button moves up
+        scrollButton.style.transform = "translateY(-300px)";
+    } else {
+        // move back itself
+        scrollButton.style.transform = "translateY(0)";
+    }
+});
+
+function scrollToTop() {
+    let scrollToTopInterval = setInterval(function() {
+        if (document.body.scrollTop > 0 || document.documentElement.scrollTop > 0) {
+            window.scrollBy(0, -20);
+        } else {
+            clearInterval(scrollToTopInterval);
+        }
+    }, 5);
+}
+</script> --}}

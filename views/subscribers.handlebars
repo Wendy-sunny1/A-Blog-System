@@ -1,0 +1,28 @@
+<link rel='stylesheet' href='/css/subscription.css' />
+
+<div class='container'>
+    {{#if subscriberNamesArray}}
+        {{!-- <h3>He/She has {{subscriberNamesArray.length}} subscribers.</h3> --}}
+        <h3>His/Her subscribers: </h3>
+        <ul>
+            {{#each subscriberNamesArray}}
+                <li class='list'>
+                    <div class='avatar'>
+                        <img
+                            class='icon'
+                            src='/images/{{this.avatarid}}.png'
+                            alt=''
+                        />
+                    </div>
+                    <div class='name'>
+                        <a
+                            href='/author/{{this.username}}'
+                        >{{this.username}}</a>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    {{else}}
+        <h3>No subscribers here.</h3>
+    {{/if}}
+</div>

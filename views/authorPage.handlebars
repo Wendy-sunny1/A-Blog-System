@@ -1,0 +1,83 @@
+<link rel='stylesheet' type='text/css' href='/css/authorHomepage.css' />
+
+<div class='userDetailContainer'>
+    <div class='avatar'>
+        <img src='/images/{{avatarID}}.png' />
+    </div>
+    <div class='username'>
+        <h1>{{username}}</h1>
+    </div>
+
+    <div class='userDescription'>
+        <p>Description: {{description}}</p>
+    </div>
+
+    <div class='userStatistics'>
+        <div class='articleNo'>
+            <button type='button' class='btn'><a
+                    href='#target2'
+                >{{authorArticleNo}}
+                    Posts</a></button>
+        </div>
+
+        <div class='followingDetail'>
+            <form action='./retriveMyAuthorsNamesByMyID' method='POST'>
+                <input name='userID' type='hidden' value='{{userID}}' />
+                <button type='submit' class='btn'>{{numberOfauthors}}
+                    Followings</button>
+            </form>
+        </div>
+
+        <div class='followerDetail'>
+            <form action='./retriveMySubscribersNamesByMyID' method='POST'>
+                <input name='userID' type='hidden' value='{{userID}}' />
+                <button type='submit' class='btn'>{{numberOfSubcribers}}
+                    Followers</button>
+            </form>
+        </div>
+    </div>
+
+    <div class='subsButton'>
+        <form action='./addNewSubscriber' method='POST'>
+            <input name='userID' type='hidden' value='{{userID}}' />
+            <button type='submit' class='btn'>{{#if
+                    subscribeStatus
+                }}Unsubscribe{{else}}Subscribe{{/if}}</button>
+        </form>
+    </div>
+</div>
+
+{{#each authorArticles}}
+    {{#if this.imageURL}}
+        <article class='grid grid--1x2 feature articleGrid'>
+            <div class='feature__content' data-aos='fade-right'>
+                <h3 id='target2' class='feature__heading'>{{this.title}}</h3>
+                <div>
+                    <span>{{this.publishTime}}</span>
+                </div>
+                <p id='homePageParagraph'>
+                    {{{truncateText this.content 200}}}
+                </p>
+                <a href='/articles/{{this.id}}' class='link-arrow'>Read more</a>
+            </div>
+
+            <picture class='pic' data-aos='zoom-in-left'>
+                <img class='feature__image' src={{this.imageURL}} alt='' />
+            </picture>
+        </article>
+    {{else}}
+        <article class='grid grid--1x1 feature articleGrid'>
+            <div class='feature__content' data-aos='fade-right'>
+
+                <h3 id='target2' class='feature__heading'>{{this.title}}</h3>
+                <div>
+                    <span>{{this.publishTime}}</span>
+                </div>
+                <p>
+                    {{{this.content}}}
+                </p>
+                <a href='/articles/{{this.id}}' class='link-arrow'>Read more</a>
+            </div>
+        </article>
+    {{/if}}
+{{/each}}

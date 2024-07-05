@@ -1,0 +1,71 @@
+<link rel='stylesheet' href='/css/singleArticleForOwner.css' />
+
+<span id='id'>{{article.id}}</span>
+
+<div class='singleArticleImgContainer'>
+    {{#if article.imageURL}}
+        <img class='article-img' src='{{article.imageURL}}' />
+    {{else}}
+    {{/if}}
+</div>
+
+<div id='article-container'>
+    <p>{{{article.content}}}</p>
+</div>
+
+<div id='quillContainer'>
+    <div id='editor-container'></div>
+</div>
+
+<div id='container1'>
+    {{! Creating buttons depending on whether theres an img or not }}
+    {{#if article.imageURL}}
+        <button class='btn' id='btnRemoveImg'>click to remove image</button>
+        <button class='btn btn--secondary' id='btnChangeImg'>click to change
+            image</button>
+
+    {{else}}
+        <div>
+            <button class='btn btn--primary' id='btnAddImg'>click to add image</button>
+        </div>
+    {{/if}}
+    <form id='imgUploadForm' enctype='multipart/form-data'>
+        <div id='imgUploadGroup'>
+            <div id='container2'>
+                <label for='inpFile'>Upload an image (optional) for your article
+                    here!</label>
+                <input
+                    type='file'
+                    name='imageFile'
+                    id='fileInput'
+                    accept='.png,.jpg,.jpeg,.bmp'
+                />
+            </div>
+
+            <div>
+                <button
+                    class='btn btn--secondary'
+                    type='button'
+                    id='imgUploadBtn'
+                >click to upload</button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div id='imgTempContainer'>
+
+</div>
+
+<div id='btnEditionContainer'>
+    <button class='btn btn--accent btnEdition'>edit this article</button>
+</div>
+
+<div id='btnDeletionContainer'>
+    <form action='/deleteArticle/{{article.id}}' method='GET'>
+        <button class='btn btn--accent' type='submit'>delete this article</button>
+    </form>
+</div>
+
+<script src='/js/WYSIWYG2.js'></script>

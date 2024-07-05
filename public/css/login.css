@@ -1,0 +1,66 @@
+/* 改进后的CSS */
+body {
+    background-color: #f2f2f2;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    width: 320px;
+    padding: 20px;
+    background-color: #fff;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type='text'],
+input[type='password'] {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button {
+    color: #fff;
+    background-color: #4cb5f9;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    padding: 10px 0;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #357abf;
+}
+
+.signUp > a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #4cb5f9;
+    transition: text-decoration 0.3s;
+}
+
+.signUp > a:hover {
+    text-decoration: underline;
+}
+
+.content > h1 {
+    font-size: 3rem;
+    margin: 2rem 0;
+}

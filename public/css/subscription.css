@@ -1,0 +1,27 @@
+.container {
+    margin: 5% 5%;
+}
+
+.avatar,
+.name,
+.button {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+.btn {
+    font-size: 10px;
+    padding: 15px;
+}
+
+form {
+    margin-bottom: 0;
+}
+
+.name:hover{
+    color: brown;
+    text-decoration: underline;
+    transition: 1s ease;
+}
